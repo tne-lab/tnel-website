@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "fittextjs": "^1.2.0",
+    "fitty": "^2.3.6",
+    "g-sheets-api": "^2.1.2",
+    "jquery": "^3.6.0"
+  }
+}
