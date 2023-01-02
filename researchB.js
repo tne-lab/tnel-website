@@ -11689,7 +11689,7 @@ GSheetReader(
       }))
       projectContainer.append(background)
       projectContainer.click(function () {
-          $('#project_info_title').html(result['Title'])
+          $('.project_info_title').html(result['Title'])
           $('#project_detail_summary').html(result['Summary'])
           $('#project_detail_technical').html(result['Technical'])
           $('#project_detail_skills').html(result['Skills'])
