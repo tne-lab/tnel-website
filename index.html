@@ -43,7 +43,7 @@
 
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between navbar">
 
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
@@ -71,12 +71,11 @@
           <li><a href="research.html">Research</a></li>
           <li><a href="publications.html">Publications</a></li>
           <li><a href="team.html">Team</a></li>
-          <li><a href="funding.html">Funding</a></li>
-          <li><a href="media.html">Media</a></li>
           <li><a href="outside.html">Outside</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav><!-- .navbar -->
+      <i class="bi bi-list mobile-nav-toggle"></i>
 
     </div>
 
@@ -140,8 +139,8 @@
               </div>
 
               <div class="title-div">
-                <h1>We are engineers and neuroscientists</h1>
-                <h4>Developing technologies to reverse the effects of mental illness</h4>
+                <h1 id="title-title">We are engineers and neuroscientists</h1>
+                <h4 id="title-subtitle">Developing technologies to reverse the effects of mental illness</h4>
               </div>
 
               <div class="swiper-pagination"></div>
@@ -178,16 +177,22 @@
           <div id="publications-front" class="col-11 d-flex flex-column align-items-center justify-content-center">
             <h1>Recent Publications</h1>
             <div class="line" style="margin-top: 10px"></div>
-            <div id="publications-front-container" class="container">
-              <div class="row">
-                <div class="pub_square col align-items-center justify-content-center ratio ratio-1x1">
-                  <h3 class="u-non-blurred"></h3>
+            <div id="publications-front-container" class="container-fluid">
+              <div class="row row-cols-1 row-cols-md-3">
+                <div class="pub-square col align-items-center justify-content-center mt-2">
+                  <div class="pub-square-image ratio ratio-1x1">
+                    <h3></h3>
+                  </div>
                 </div>
-                <div class="pub_square col align-items-center justify-content-center ratio ratio-1x1">
-                  <h3 class="u-non-blurred"></h3>
+                <div class="pub-square col align-items-center justify-content-center mt-2">
+                  <div class="pub-square-image ratio ratio-1x1">
+                    <h3></h3>
+                  </div>
                 </div>
-                <div class="pub_square col align-items-center justify-content-center ratio ratio-1x1">
-                  <h3 class="u-non-blurred"></h3>
+                <div class="pub-square col align-items-center justify-content-center mt-2">
+                  <div class="pub-square-image ratio ratio-1x1">
+                    <h3></h3>
+                  </div>
                 </div>
               </div>
             </div>

@@ -11669,13 +11669,16 @@ const options = {
   sheetName: 'Form Responses 1'
 }
 
+textFit($("#title-title"))
+textFit($("#title-subtitle"))
+
 GSheetReader(
   options,
   results => {
-    $('.pub_square').each(function(i, obj) {
+    $('.pub-square-image').each(function(i, obj) {
       $(this).css('background-image','url(https://drive.google.com/uc?export=view&'+results[i]['Figure'].substring(results[0]['Figure'].indexOf('id='))+')');
-      $(this).children().eq(0).text(results[i].Title)
-      textFit($(this).children()[0])
+        $(this).children().eq(0).text(results[i].Title)
+        textFit($(this).children()[0])
     });
     //$('#title').text(results[0].Title)
     //$('#authors').html(results[0].Authors.replace(new RegExp(String.fromCharCode(8224),"g"),'<sup>'+String.fromCharCode(8224)+'</sup>'))

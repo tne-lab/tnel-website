@@ -344,6 +344,7 @@ section {
 
 .mobile-nav-toggle {
   display: none;
+  margin-right: 6px;
 }
 
 /*--------------------------------------------------------------
@@ -415,7 +416,7 @@ section {
 
   .mobile-nav-toggle {
     display: inline-block;
-    color: var(--color-secondary);
+    color: white;
     font-size: 28px;
     cursor: pointer;
     line-height: 0;
@@ -658,20 +659,20 @@ section {
 .pub-link {
   font-family: "Open Sans";
   margin-top: 20px;
-  font-size: 18px;
+  font-size: calc(0.8em + 0.5vw);
   margin-left: 20px;
 }
 
 .pub-title {
   font-family: "Open Sans";
-  font-size: 36px;
+  font-size: calc(1em + 1vw);
   color: rgb(255, 142, 71);
   text-align: center;
 }
 
 .pub-authors {
   font-family: "Open Sans";
-  font-size: 24px;
+  font-size: calc(0.8em + 0.5vw);
   text-align: center;
 }
 
@@ -680,6 +681,11 @@ section {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.pub-filter {
+  font-size: calc(1em + 0.4vw);
+  cursor: pointer;
 }
 
 #pub-header {
@@ -723,8 +729,28 @@ section {
   font-weight: bold;
 }
 
+#alumni-header{
+  font-family: "Open Sans";
+  font-weight: bold;
+}
+
+#alumni-names{
+  font-family: "Open Sans";
+  font-weight: bold;
+}
+
+#alumni-details{
+  font-family: "Open Sans";
+}
+
 .team-type {
   margin-bottom: 20px;
+}
+
+.team-left img {
+  aspect-ratio: 1/1;
+  width: 50%;
+  object-fit: contain;
 }
 
 .team-left h2 {
@@ -742,10 +768,14 @@ section {
 .team-left h6 {
   font-family: "Open Sans";
   font-weight: bold;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .team-right {
-  background-color: rgb(248, 248, 248)
+  background-color: rgb(248, 248, 248);
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .team-right p {
@@ -755,6 +785,7 @@ section {
 .team-right h6 {
   text-transform: uppercase;
   font-family: "Open Sans";
+  word-wrap: break-word;
 }
 
 .team-work {
@@ -799,12 +830,13 @@ section {
 
 #research-front h1 {
   color: white;
-  font-size: 60px;
+  font-size: calc(22px + 1.5vw);
   font-family: "Open Sans";
   font-weight: bold;
 }
 
 #research-front h4 {
+  font-size: calc(16px + 0.2vw);
   color: white;
   font-family: "Open Sans"
 }
@@ -827,54 +859,46 @@ section {
 }
 
 #publications-front h1 {
-  font-size: 60px;
+  font-size: calc(22px + 1.5vw);
   font-family: "Open Sans";
   font-weight: bold;
 }
 
-.pub_square {
-  filter: brightness(100%);
-  transition-property: filter;
-  margin: 10px;
+.pub-square-image {
   background-color: rgb(216, 216, 216);
   background-size: cover;
   background-position: center;
-  position: relative;
-  -webkit-transition: all 0.3s ease-in-out;  /* Chrome 1-25, Safari 3.2+ */
-  -moz-transition: all 0.3s ease-in-out;  /* Firefox 4-15 */
-  -o-transition: all 0.3s ease-in-out;  /* Opera 10.50–12.00 */
-  transition: all 0.3s ease-in-out;
 }
 
-.pub_square::after {
-  -webkit-backdrop-filter: blur(5px) brightness(60%); /* Use for Safari 9+, Edge 17+ (not a mistake) and iOS Safari 9.2+ */
-  backdrop-filter: blur(5px) brightness(60%); /* Supported in Chrome 76 */
-
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%; height: 100%;
-  top: 0;
-  left: 0;
-}
-
-.pub_square:hover {
-    filter: brightness(130%);
+.pub-square h3:hover {
+  backdrop-filter: brightness(70%) blur(5px);
+  -webkit-backdrop-filter: brightness(70%) blur(5px);
+  -moz-backdrop-filter: brightness(70%) blur(5px);
+  -o-backdrop-filter: brightness(70%) blur(5px);
     cursor: pointer;
 }
 
-.pub_square h3 {
+.pub-square h3 {
   font-family: "Open Sans";
   text-align: center;
   color: white;
   padding: 5%;
-  height: 60%;
+  height: 100%;
   width: 100%;
   margin: auto;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  backdrop-filter: brightness(60%) blur(5px);
+  -webkit-backdrop-filter: brightness(60%) blur(5px);
+  -moz-backdrop-filter: brightness(60%) blur(5px);
+  -o-backdrop-filter: brightness(60%) blur(5px);
+  transition-property: backdrop-filter;
+  -webkit-transition: all 0.3s ease-in-out;  /* Chrome 1-25, Safari 3.2+ */
+  -moz-transition: all 0.3s ease-in-out;  /* Firefox 4-15 */
+  -o-transition: all 0.3s ease-in-out;  /* Opera 10.50–12.00 */
+  transition: all 0.3s ease-in-out;
 }
 
 .fit {
@@ -882,10 +906,10 @@ section {
     white-space: nowrap;
 }
 
-.u-non-blurred {
+/* .u-non-blurred {
   position: absolute;
   z-index: 1;
-}
+} */
 
 .line {
   height: 4px;
@@ -940,14 +964,13 @@ section {
 .outside-title h1 {
   font-family: "Open Sans";
   font-weight: bold;
-  font-size: 15em;
+  font-size: calc(7em + 8vw);
   color: green;
   background: url("../img/outside.jpg") no-repeat;
   background-size: cover;
   background-position: bottom;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-top: -30px;
 }
 
 .outside-title h4 {
@@ -955,7 +978,6 @@ section {
   font-weight: bold;
   color: black;
   text-transform: uppercase;
-  margin-top: -40px;
   margin-bottom: 20px;
 }
 
@@ -1117,6 +1139,7 @@ section {
 }
 
 .title-div {
+  width: 80%;
   text-transform: uppercase;
   text-align: center;
   color: white;
@@ -1128,12 +1151,13 @@ section {
 }
 
 .title-div h1 {
-  font-size: 4em;
+  font-size: calc(22px + 1.5vw);
   font-family: "Open Sans";
   font-weight: bold;
 }
 
 .title-div h4 {
+  font-size: calc(16px + 0.2vw);
   font-family: "Open Sans";
 }
 

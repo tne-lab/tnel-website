@@ -7,35 +7,47 @@ const options = {
   sheetName: 'Form Responses 1'
 }
 
+const roles = ['Prinicipal Investigator', 'Staff Scientist', 'Post-Doctoral Researcher', 'Clinical Research Coordinator', 'Graduate Student', 'Laboratory Technician', 'Undergraduate Student']
+
+function comparePeople(a, b) {
+  if (roles.indexOf(a['Job Title (Select closest fit)']) < roles.indexOf(b['Job Title (Select closest fit)'])) {
+    return -1
+  }
+  if (roles.indexOf(a['Job Title (Select closest fit)']) > roles.indexOf(b['Job Title (Select closest fit)'])) {
+    return 1
+  }
+  return a['Name (First Last) '].localeCompare(b['Name (First Last) '])
+}
+
 GSheetReader(
   options,
   results => {
-    results.forEach(result => {
+    let members = results.filter(function(t) { return t['We need a way to differentiate whether someone is a current lab member or alumni, so please select "Current Member" below'] == 'Current Member'})
+    let alumni = results.filter(function(t) { return t['We need a way to differentiate whether someone is a current lab member or alumni, so please select "Current Member" below'] != 'Current Member'})
+    members.sort(comparePeople)
+    members.forEach(result => {
       let memberContainer = $('<div>', {
-          class: 'row mb-1',
+          class: 'row mb-3',
       })
       let leftContainer = $('<div>', {
-          class: 'team-left col-6 text-center justify-content-center align-items-center'
+          class: 'team-left col-12 col-md-6 text-center container justify-content-center align-items-center'
       })
       leftContainer.append($('<img>', {
           src: 'https://drive.google.com/uc?export=view&'+result['Share a photo of yourself for the website'].substring(result['Share a photo of yourself for the website'].indexOf('id='))
       }))
       leftContainer.append($('<h2>', {
           class: 'mt-3',
-          html: result.Name
+          html: result['Name (First Last) ']
       }))
       leftContainer.append($('<h6>', {
-          html: result['Job Title'] + " (" + result.Pronouns + ")"
-      }))
-      leftContainer.append($('<h4>', {
-          html: "Education"
+          html: result['Job Title (Select closest fit)'] + " (" + result.Pronouns + ")"
       }))
       leftContainer.append($('<h6>', {
           html: result['Major/Education (Can include schools, degrees, graduation year, etc.)'].replace('\n','<br>')
       }))
       memberContainer.append(leftContainer)
       let rightContainer = $('<div>', {
-          class: 'team-right col-6 d-flex flex-column justify-content-center align-items-center'
+          class: 'team-right col-12 col-md-6 d-flex flex-column justify-content-center align-items-center'
       })
       rightContainer.append($('<p>', {
           html: result['Tell us a little about yourself. What are you generally interested in either in research or in life? Why did you choose to work in the TNE lab?']
@@ -51,7 +63,7 @@ GSheetReader(
       })
       result['Research Areas'].split(", ").forEach(area => {
         workRow.append($('<h6>', {
-            class: "col-4 team-work text-center",
+            class: "col-4 d-flex justify-content-center align-items-center team-work text-center",
             html: area
         }))
       });
@@ -132,11 +144,21 @@ GSheetReader(
       rightContainer.append(statsContainer)
       memberContainer.append(leftContainer)
       memberContainer.append(rightContainer)
-
-      console.log(result)
       //$("#team-container").parent().css('display','initial')
       $("#team-container").append(memberContainer)
     })
+
+    let alumniNames = ""
+    let alumniDetails = ""
+    console.log(alumni)
+    alumni.forEach(result => {
+      alumniNames += result['Name (First Last) '] + "<br>"
+      let details = result.hasOwnProperty('Degree awarded') ? result['Degree awarded'] + " " : ""
+      details += result.hasOwnProperty('New position') ? "(" + result['New position'] + ")" : ""
+      alumniDetails += details + "<br>"
+    })
+    $("#alumni-names").html(alumniNames)
+    $("#alumni-details").html(alumniDetails)
   },
   error => {
     console.log(error)

@@ -11674,7 +11674,7 @@ GSheetReader(
   results => {
     results.forEach(result => {
       let projectContainer = $('<div>', {
-          class: 'col'
+          class: 'col-12 col-md-6 col-lg-4'
       })
       let image = 'https://drive.google.com/uc?export=view&id=' + result['Image']
       let background = $('<div>', {
