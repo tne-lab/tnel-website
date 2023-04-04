@@ -734,12 +734,12 @@ section {
   font-weight: bold;
 }
 
-#alumni-names{
+.alumni-name{
   font-family: "Open Sans";
   font-weight: bold;
 }
 
-#alumni-details{
+.alumni-detail{
   font-family: "Open Sans";
 }
 
@@ -785,7 +785,15 @@ section {
 .team-right h6 {
   text-transform: uppercase;
   font-family: "Open Sans";
-  word-wrap: break-word;
+}
+
+.stat-text {
+  width: 100%;
+  text-transform: uppercase;
+  font-family: "Open Sans";
+  -ms-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 .team-work {
@@ -807,6 +815,26 @@ section {
   background-color: black;
   border-radius: 50%;
   margin-right: 1%;
+}
+
+.filled-stat-1 {
+  background-color: #ee4035;
+}
+
+.filled-stat-2 {
+  background-color: #f37736;
+}
+
+.filled-stat-3 {
+  background-color: #fdf498;
+}
+
+.filled-stat-4 {
+  background-color: #7bc043;
+}
+
+.filled-stat-5 {
+  background-color: #0492cf;
 }
 
 .unfilled-stat {

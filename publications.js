@@ -13,7 +13,7 @@ GSheetReader(
     results.forEach(result => {
       let container = $('.pub-row-container')
       container.append($('<div>', {
-        html: result['Title'],
+        html: result['ID'],
         class: 'col-auto pub-filter'
       }))
     })

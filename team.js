@@ -7,7 +7,7 @@ const options = {
   sheetName: 'Form Responses 1'
 }
 
-const roles = ['Prinicipal Investigator', 'Staff Scientist', 'Post-Doctoral Researcher', 'Clinical Research Coordinator', 'Graduate Student', 'Laboratory Technician', 'Undergraduate Student']
+const roles = ['Prinicipal Investigator', 'Lab Manager', 'Staff Scientist', 'Post-Doctoral Researcher', 'Clinical Research Coordinator', 'Graduate Student', 'Laboratory Technician', 'Undergraduate Student']
 
 function comparePeople(a, b) {
   if (roles.indexOf(a['Job Title (Select closest fit)']) < roles.indexOf(b['Job Title (Select closest fit)'])) {
@@ -50,7 +50,7 @@ GSheetReader(
           class: 'team-right col-12 col-md-6 d-flex flex-column justify-content-center align-items-center'
       })
       rightContainer.append($('<p>', {
-          html: result['Tell us a little about yourself. What are you generally interested in either in research or in life? Why did you choose to work in the TNE lab?']
+          html: result['Tell us a little about yourself. What are you generally interested in either research or in life? Why did you choose to work in the TNE lab?']
       }))
       rightContainer.append($('<h6>', {
           html: "You can find me working on"
@@ -78,10 +78,14 @@ GSheetReader(
       let statsRow1 = $('<div>', {
           class: 'row align-items-center'
       })
-      statsRow1.append($('<h6>', {
-          class: 'col-4',
+      let statsRowText1 = $('<div>', {
+          class: 'col-4'
+      })
+      statsRowText1.append($('<h6>', {
+          class: 'col-4 stat-text',
           html: result['Write 1st stat about yourself']
       }))
+      statsRow1.append(statsRowText1)
       let statsCircles1 = $('<div>', {
           class: 'col-4 d-flex'
       })
@@ -100,10 +104,14 @@ GSheetReader(
       let statsRow2 = $('<div>', {
           class: 'row align-items-center  mt-2'
       })
-      statsRow2.append($('<h6>', {
-          class: 'col-4',
+      let statsRowText2 = $('<div>', {
+          class: 'col-4'
+      })
+      statsRowText2.append($('<h6>', {
+          class: 'stat-text',
           html: result['Write 2nd stat about yourself']
       }))
+      statsRow2.append(statsRowText2)
       let statsCircles2 = $('<div>', {
           class: 'col-4 d-flex'
       })
@@ -122,16 +130,20 @@ GSheetReader(
       let statsRow3 = $('<div>', {
           class: 'row align-items-center mt-2'
       })
-      statsRow3.append($('<h6>', {
-          class: 'col-4',
+      let statsRowText3 = $('<div>', {
+          class: 'col-4'
+      })
+      statsRowText3.append($('<h6>', {
+          class: 'stat-text',
           html: result['Write 3rd stat about yourself']
       }))
+      statsRow3.append(statsRowText3)
       let statsCircles3 = $('<div>', {
           class: 'col-4 d-flex'
       })
       for (let i=1; i<=result['Rank 3rd stat from 1-5']; i++) {
         statsCircles3.append($('<div>', {
-            class: 'filled-stat'
+            class: (result['Write 3rd stat about yourself'] == 'Applied boredom') ? 'filled-stat filled-stat-' + i: 'filled-stat'
         }))
       }
       for (let i=1; i<=5-result['Rank 3rd stat from 1-5']; i++) {
@@ -148,17 +160,21 @@ GSheetReader(
       $("#team-container").append(memberContainer)
     })
 
-    let alumniNames = ""
-    let alumniDetails = ""
-    console.log(alumni)
     alumni.forEach(result => {
-      alumniNames += result['Name (First Last) '] + "<br>"
+      let row = $('<tr>', {
+      })
+      row.append($('<td>', {
+          class: 'alumni-name',
+          html: result['Name (First Last) ']
+      }))
       let details = result.hasOwnProperty('Degree awarded') ? result['Degree awarded'] + " " : ""
       details += result.hasOwnProperty('New position') ? "(" + result['New position'] + ")" : ""
-      alumniDetails += details + "<br>"
+      row.append($('<td>', {
+          class: 'alumni-detail',
+          html: details
+      }))
+      $('.alumni-row').append(row)
     })
-    $("#alumni-names").html(alumniNames)
-    $("#alumni-details").html(alumniDetails)
   },
   error => {
     console.log(error)
