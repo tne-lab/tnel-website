@@ -11676,7 +11676,7 @@ GSheetReader(
       let container = $('.pub-row-container')
       container.append($('<div>', {
         html: result['ID'],
-        class: 'col-auto pub-filter'
+        class: 'col-auto pub-filter mx-1 my-1'
       }))
     })
     $('.pub-filter').click(function() {
@@ -11695,21 +11695,29 @@ const pub_els = [];
 let all_pubs;
 
 function filter_pubs(el) {
-  $('.pub-row-container').children().each(function () {
-    if ($(this).html().startsWith('<u>')) {
-      $(this).html($(this).html().split('<u>').pop().split('</u>')[0])
-    }
+  $('.pub-row-container').children('.pub-filter').each(function () {
+    $(this).removeClass('pub-filter-selected')
   })
-  const topic = el.html().split('<u>').pop().split('</u>')[0]
-  el.html("<u>" + topic + "</u>")
+  const topic = el.html()
+  el.addClass('pub-filter-selected')
 
+  const years = new Set();
   for (let i = 0; i < pub_els.length; i++) {
     if (topic == 'All' || all_pubs[i]['Research Area Tags'].includes(topic)) {
       pub_els[i].removeClass('d-none')
+      const dateParts = all_pubs[i]["Date"].split("/");
+      years.add(dateParts[dateParts.length-1])
     } else {
       pub_els[i].addClass('d-none')
     }
   }
+  yearMap.forEach((value, key) => {
+    if (!years.has(key)) {
+      value.addClass('d-none')
+    } else {
+      value.removeClass('d-none')
+    }
+  })
 }
 
 GSheetReader(
@@ -11722,30 +11730,31 @@ GSheetReader(
     results.forEach(result => {
       const dateParts = result["Date"].split("/");
       if (!yearMap.has(dateParts[dateParts.length-1])) {
-        yearMap.set(dateParts[dateParts.length-1], $('<div>', {
-            class: 'container-md',
-            "data-aos": 'fade-in'
-        }))
-        $('#main').append($('<section>', {}).append(yearMap.get(dateParts[dateParts.length-1])))
-        yearMap.get(dateParts[dateParts.length-1]).append($('<div>', {
+        const temp = $('<div>', {
+            class: 'container-md'
+        })
+        yearMap.set(dateParts[dateParts.length-1], $('<section>', {}))
+        yearMap.get(dateParts[dateParts.length-1]).append(temp);
+        $('#main').append(yearMap.get(dateParts[dateParts.length-1]))
+        temp.append($('<div>', {
             class: 'row justify-content-center',
         }).append($('<div>', {
             class: 'col-7 pub-divider',
         })))
-        yearMap.get(dateParts[dateParts.length-1]).append($('<div>', {
+        temp.append($('<div>', {
             class: 'row justify-content-center',
-        }).append($('<h2>', {
+        }).append($('<h1>', {
             class: 'col pub-year',
             html: dateParts[dateParts.length-1]
         })))
-        yearMap.get(dateParts[dateParts.length-1]).append($('<div>', {
+        temp.append($('<div>', {
             class: 'row justify-content-center',
         }).append($('<div>', {
             class: 'col-11 pub-divider',
         })))
       }
       const pubContainer = $('<div>', {
-          class: 'row justify-content-center',
+          class: 'row justify-content-center mb-5',
       })
       pubContainer.append($('<div>', {
           class: 'col-11 pub-title',
@@ -11759,33 +11768,45 @@ GSheetReader(
           html: result.Authors
       }))
       const linksRow =  $('<div>', {
-          class: 'row justify-content-end'
+          class: 'row col-11 justify-content-end mt-2'
+      })
+      const topicsContainer = $('<div>', {
+          class: 'col-12 col-md-6 d-flex justify-content-start justify-content-md-end'
       })
       const linksContainer = $('<div>', {
-          class: 'col-11'
+          class: 'col-12 col-md-6'
       })
       linksRow.append(linksContainer)
+      linksRow.append(topicsContainer)
+      result['Research Area Tags'].split(',').forEach(tag => {
+        if (tag.length > 0) {
+          topicsContainer.append($('<div>', {
+            html: tag,
+            class: 'pub-filter mx-1 my-1 px-2'
+          }))
+        }
+      })
       linksContainer.append($('<a>', {
           class: 'pub-link',
           html: 'PDF',
           href: 'https://drive.google.com/uc?export=view&'+result['Publication File (PDF)'].substring(result['Publication File (PDF)'].indexOf('id='))
       }))
       linksContainer.append($('<a>', {
-          class: 'pub-link',
+          class: 'pub-link ms-3',
           html: 'Link',
           href: result['Link (DOI)']
       }))
       linksContainer.append($('<a>', {
-          class: 'pub-link',
+          class: 'pub-link ms-3',
           html: 'Citation',
           href: 'https://drive.google.com/uc?export=download&'+result['Citation (BibTEX)'].substring(result['Citation (BibTEX)'].indexOf('id='))
       }))
       pubContainer.append(linksRow)
-      pubContainer.append($('<div>', {
-          class: 'col-11 pub-divider',
-          style: 'margin-bottom: 20px; margin-top: 10px'
-      }))
-      yearMap.get(dateParts[dateParts.length-1]).append(pubContainer)
+      // pubContainer.append($('<div>', {
+      //     class: 'col-11 pub-divider',
+      //     style: 'margin-bottom: 20px; margin-top: 10px'
+      // }))
+      yearMap.get(dateParts[dateParts.length-1]).children('div').eq(0).append(pubContainer)
       pub_els.push(pubContainer)
     })
   },

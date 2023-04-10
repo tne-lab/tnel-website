@@ -11675,6 +11675,9 @@ textFit($("#title-subtitle"))
 GSheetReader(
   options,
   results => {
+    results.sort(function (a, b) {
+      return new Date(b["Date"]) - new Date(a["Date"])
+    })
     $('.pub-square-image').each(function(i, obj) {
       $(this).css('background-image','url(https://drive.google.com/uc?export=view&'+results[i]['Figure'].substring(results[0]['Figure'].indexOf('id='))+')');
         $(this).children().eq(0).text(results[i].Title)

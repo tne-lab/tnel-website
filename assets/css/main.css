@@ -660,20 +660,19 @@ section {
   font-family: "Open Sans";
   margin-top: 20px;
   font-size: calc(0.8em + 0.5vw);
-  margin-left: 20px;
 }
 
 .pub-title {
   font-family: "Open Sans";
   font-size: calc(1em + 1vw);
   color: rgb(255, 142, 71);
-  text-align: center;
+  text-align: left;
 }
 
 .pub-authors {
   font-family: "Open Sans";
   font-size: calc(0.8em + 0.5vw);
-  text-align: center;
+  text-align: left;
 }
 
 .pub-year {
@@ -684,8 +683,24 @@ section {
 }
 
 .pub-filter {
-  font-size: calc(1em + 0.4vw);
+  background: rgb(0, 74, 172);
+  color: white;
+  border-radius: 500px;
+  font-size: calc(0.8em + 0.3vw);
   cursor: pointer;
+  -webkit-transition: background 0.1s ease-in-out;
+  -moz-transition: background 0.1s ease-in-out;
+  -ms-transition: background 0.1s ease-in-out;
+  -o-transition: background 0.1s ease-in-out;
+  transition: background 0.1s ease-in-out;
+}
+
+.pub-filter:hover {
+  background: rgb(82, 114, 253);
+}
+
+.pub-filter-selected {
+  background: rgb(82, 114, 253);
 }
 
 #pub-header {
@@ -707,13 +722,21 @@ section {
 }
 
 #contact-header {
-  height: 150px;
-  background-color: rgb(254, 221, 92);
+  height: 200px;
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("../img/flipper1.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 #contact-header h1 {
   font-family: "Open Sans";
-  text-transform: uppercase;
+  color: white;
+  font-size: 3em
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0,0,0,.125);
 }
 
 #team-header {
@@ -946,7 +969,7 @@ section {
 }
 
 .tnel-button {
-  background-color: rgb(254, 221, 92);
+  background-color: rgb(255, 185, 21);
   padding: 5px 20px 5px 20px;
   font-size: 25px;
   font-family: "Open Sans";
@@ -955,6 +978,7 @@ section {
   -moz-transition: all 0.3s ease-in-out;  /* Firefox 4-15 */
   -o-transition: all 0.3s ease-in-out;  /* Opera 10.50–12.00 */
   transition: all 0.3s ease-in-out;
+  color: white;
 }
 
 .contact-button {
@@ -1012,7 +1036,6 @@ section {
 .outside-subtitle p {
   font-family: "Open Sans";
   color: black;
-  text-transform: uppercase;
   text-align: center;
 }
 

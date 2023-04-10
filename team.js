@@ -27,10 +27,10 @@ GSheetReader(
     members.sort(comparePeople)
     members.forEach(result => {
       let memberContainer = $('<div>', {
-          class: 'row mb-3',
+          class: 'row mb-5',
       })
       let leftContainer = $('<div>', {
-          class: 'team-left col-12 col-md-6 text-center container justify-content-center align-items-center'
+          class: 'team-left d-flex flex-column col-12 col-md-6 text-center container justify-content-center align-items-center'
       })
       leftContainer.append($('<img>', {
           src: 'https://drive.google.com/uc?export=view&'+result['Share a photo of yourself for the website'].substring(result['Share a photo of yourself for the website'].indexOf('id='))
@@ -69,90 +69,98 @@ GSheetReader(
       });
       workContainer.append(workRow)
       rightContainer.append(workContainer)
-      rightContainer.append($('<h6>', {
-          html: "Stats about me"
-      }))
+      if (result['Write 1st stat about yourself'].length > 0 || result['Write 2nd stat about yourself'].length > 0 || result['Write 3rd stat about yourself'].length > 0) {
+        rightContainer.append($('<h6>', {
+            html: "Stats about me"
+        }))
+      }
       let statsContainer = $('<div>', {
           class: 'container-md align-items-center justify-content-center'
       })
-      let statsRow1 = $('<div>', {
-          class: 'row align-items-center'
-      })
-      let statsRowText1 = $('<div>', {
-          class: 'col-4'
-      })
-      statsRowText1.append($('<h6>', {
-          class: 'col-4 stat-text',
-          html: result['Write 1st stat about yourself']
-      }))
-      statsRow1.append(statsRowText1)
-      let statsCircles1 = $('<div>', {
-          class: 'col-4 d-flex'
-      })
-      for (let i=1; i<=result['Rank 1st stat from 1-5']; i++) {
-        statsCircles1.append($('<div>', {
-            class: 'filled-stat'
+      if (result['Write 1st stat about yourself'].length > 0) {
+        let statsRow1 = $('<div>', {
+            class: 'row align-items-center'
+        })
+        let statsRowText1 = $('<div>', {
+            class: 'col-4'
+        })
+        statsRowText1.append($('<h6>', {
+            class: 'col-4 stat-text',
+            html: result['Write 1st stat about yourself']
         }))
+        statsRow1.append(statsRowText1)
+        let statsCircles1 = $('<div>', {
+            class: 'col-4 d-flex'
+        })
+        for (let i=1; i<=result['Rank 1st stat from 1-5']; i++) {
+          statsCircles1.append($('<div>', {
+              class: 'filled-stat'
+          }))
+        }
+        for (let i=1; i<=5-result['Rank 1st stat from 1-5']; i++) {
+          statsCircles1.append($('<div>', {
+              class: 'unfilled-stat'
+          }))
+        }
+        statsRow1.append(statsCircles1)
+        statsContainer.append(statsRow1)
       }
-      for (let i=1; i<=5-result['Rank 1st stat from 1-5']; i++) {
-        statsCircles1.append($('<div>', {
-            class: 'unfilled-stat'
+      if (result['Write 2nd stat about yourself'].length > 0) {
+        let statsRow2 = $('<div>', {
+            class: 'row align-items-center  mt-2'
+        })
+        let statsRowText2 = $('<div>', {
+            class: 'col-4'
+        })
+        statsRowText2.append($('<h6>', {
+            class: 'stat-text',
+            html: result['Write 2nd stat about yourself']
         }))
+        statsRow2.append(statsRowText2)
+        let statsCircles2 = $('<div>', {
+            class: 'col-4 d-flex'
+        })
+        for (let i=1; i<=result['Rank 2nd stat from 1-5']; i++) {
+          statsCircles2.append($('<div>', {
+              class: 'filled-stat'
+          }))
+        }
+        for (let i=1; i<=5-result['Rank 2nd stat from 1-5']; i++) {
+          statsCircles2.append($('<div>', {
+              class: 'unfilled-stat'
+          }))
+        }
+        statsRow2.append(statsCircles2)
+        statsContainer.append(statsRow2)
       }
-      statsRow1.append(statsCircles1)
-      statsContainer.append(statsRow1)
-      let statsRow2 = $('<div>', {
-          class: 'row align-items-center  mt-2'
-      })
-      let statsRowText2 = $('<div>', {
-          class: 'col-4'
-      })
-      statsRowText2.append($('<h6>', {
-          class: 'stat-text',
-          html: result['Write 2nd stat about yourself']
-      }))
-      statsRow2.append(statsRowText2)
-      let statsCircles2 = $('<div>', {
-          class: 'col-4 d-flex'
-      })
-      for (let i=1; i<=result['Rank 2nd stat from 1-5']; i++) {
-        statsCircles2.append($('<div>', {
-            class: 'filled-stat'
+      if (result['Write 3rd stat about yourself'].length > 0) {
+        let statsRow3 = $('<div>', {
+            class: 'row align-items-center mt-2'
+        })
+        let statsRowText3 = $('<div>', {
+            class: 'col-4'
+        })
+        statsRowText3.append($('<h6>', {
+            class: 'stat-text',
+            html: result['Write 3rd stat about yourself']
         }))
+        statsRow3.append(statsRowText3)
+        let statsCircles3 = $('<div>', {
+            class: 'col-4 d-flex'
+        })
+        for (let i=1; i<=result['Rank 3rd stat from 1-5']; i++) {
+          statsCircles3.append($('<div>', {
+              class: (result['Write 3rd stat about yourself'] == 'Applied boredom') ? 'filled-stat filled-stat-' + i: 'filled-stat'
+          }))
+        }
+        for (let i=1; i<=5-result['Rank 3rd stat from 1-5']; i++) {
+          statsCircles3.append($('<div>', {
+              class: 'unfilled-stat'
+          }))
+        }
+        statsRow3.append(statsCircles3)
+        statsContainer.append(statsRow3)
       }
-      for (let i=1; i<=5-result['Rank 2nd stat from 1-5']; i++) {
-        statsCircles2.append($('<div>', {
-            class: 'unfilled-stat'
-        }))
-      }
-      statsRow2.append(statsCircles2)
-      statsContainer.append(statsRow2)
-      let statsRow3 = $('<div>', {
-          class: 'row align-items-center mt-2'
-      })
-      let statsRowText3 = $('<div>', {
-          class: 'col-4'
-      })
-      statsRowText3.append($('<h6>', {
-          class: 'stat-text',
-          html: result['Write 3rd stat about yourself']
-      }))
-      statsRow3.append(statsRowText3)
-      let statsCircles3 = $('<div>', {
-          class: 'col-4 d-flex'
-      })
-      for (let i=1; i<=result['Rank 3rd stat from 1-5']; i++) {
-        statsCircles3.append($('<div>', {
-            class: (result['Write 3rd stat about yourself'] == 'Applied boredom') ? 'filled-stat filled-stat-' + i: 'filled-stat'
-        }))
-      }
-      for (let i=1; i<=5-result['Rank 3rd stat from 1-5']; i++) {
-        statsCircles3.append($('<div>', {
-            class: 'unfilled-stat'
-        }))
-      }
-      statsRow3.append(statsCircles3)
-      statsContainer.append(statsRow3)
       rightContainer.append(statsContainer)
       memberContainer.append(leftContainer)
       memberContainer.append(rightContainer)
