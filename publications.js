@@ -65,6 +65,7 @@ GSheetReader(
     results.sort(function (a, b) {
       return new Date(b["Date"]) - new Date(a["Date"])
     })
+    let num = results.length
     results.forEach(result => {
       const dateParts = result["Date"].split("/");
       if (!yearMap.has(dateParts[dateParts.length-1])) {
@@ -96,8 +97,9 @@ GSheetReader(
       })
       pubContainer.append($('<div>', {
           class: 'col-11 pub-title',
-          html: result.Title
+          html: "<span style='color: #999999'>" +num + ". </span>" + result.Title
       }))
+      num = num - 1
       pubContainer.append($('<div>', {
           class: 'w-100'
       }))
