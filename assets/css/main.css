@@ -693,6 +693,7 @@ section {
   -ms-transition: background 0.1s ease-in-out;
   -o-transition: background 0.1s ease-in-out;
   transition: background 0.1s ease-in-out;
+  text-align: center;
 }
 
 .pub-filter:hover {
@@ -703,9 +704,32 @@ section {
   background: rgb(82, 114, 253);
 }
 
+.pub-project-filter {
+  background: rgb(255, 185, 21);
+  color: white;
+  border-radius: 500px;
+  font-size: calc(0.8em + 0.3vw);
+  cursor: pointer;
+  filter: brightness(100%);
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -ms-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  text-align: center;
+}
+
+.pub-project-filter:hover {
+  filter: brightness(110%);
+}
+
+.pub-project-filter-selected {
+  filter: brightness(110%);
+}
+
 #pub-header {
   height: 200px;
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("../img/publications.jpg");
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("../img/publications.webp");
   background-size: cover;
   background-position: center;
 }
@@ -723,7 +747,7 @@ section {
 
 #contact-header {
   height: 200px;
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("../img/flipper1.jpg");
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("../img/flipper1.webp");
   background-size: cover;
   background-position: center;
 }
@@ -741,7 +765,7 @@ section {
 
 #team-header {
   height: 200px;
-  background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url("../img/sfn.jpg");
+  background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url("../img/sfn.webp");
   background-size: cover;
   background-position: bottom;
   color: white;
@@ -874,7 +898,7 @@ section {
 
 #research-front {
   height: 300px;
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("../img/research.jpg");
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("../img/research.webp");
   background-size: cover;
   background-position: center;
 }
@@ -894,7 +918,7 @@ section {
 
 #team-front {
   height: 350px;
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("../img/team.jpg");
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("../img/team.webp");
   background-size: cover;
   background-position: center;
 }
@@ -1018,7 +1042,7 @@ section {
   font-weight: bold;
   font-size: calc(7em + 8vw);
   color: green;
-  background: url("../img/outside.jpg") no-repeat;
+  background: url("../img/outside.webp") no-repeat;
   background-size: cover;
   background-position: bottom;
   -webkit-background-clip: text;
@@ -1091,7 +1115,7 @@ section {
 }
 
 .research-title {
-  background: url(../img/research.jpg);
+  background: url(../img/research.webp);
   background-position: center;
   background-size: cover;
   text-align: center;
@@ -1796,7 +1820,7 @@ section {
 --------------------------------------------------------------*/
 .footer {
   overflow: hidden;
-  background: url("../img/middle_banner.png");
+  background: url("../img/middle_banner.webp");
   background-position: top;
   background-size: 100%;
   font-size: 16px;

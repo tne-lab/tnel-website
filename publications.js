@@ -11,14 +11,13 @@ GSheetReader(
   options2,
   results => {
     results.forEach(result => {
-      let container = $('.pub-row-container')
-      container.append($('<div>', {
+      $('<div>', {
         html: result['ID'],
-        class: 'col-auto pub-filter mx-1 my-1'
-      }))
+        class: 'col-auto pub-project-filter mx-1 my-1'
+      }).insertBefore("#filter-topic-header")
     })
-    $('.pub-filter').click(function() {
-      filter_pubs($(this))
+    $('.pub-project-filter').click(function() {
+      filter_pubs($(this), false)
     })
   })
 
@@ -30,18 +29,41 @@ const options = {
 
 const yearMap = new Map();
 const pub_els = [];
+const topics = ["Deep Brain Stimulation", "Transcranial Magnetic Stimulation", "Traumatic Brain Injury", "Phase Locked Stimulation", "Addiction", "Ethics", "Neuroimaging","Clinical Psychiatry"]
 let all_pubs;
+let cur_topic = 'All'
+let cur_project = 'All'
 
-function filter_pubs(el) {
-  $('.pub-row-container').children('.pub-filter').each(function () {
-    $(this).removeClass('pub-filter-selected')
+topics.forEach(topic => {
+  let container = $('.pub-row-container')
+  container.append($('<div>', {
+    html: topic,
+    class: 'col-auto pub-filter mx-1 my-1'
+  }))
+  $('.pub-filter').click(function() {
+    filter_pubs($(this), true)
   })
-  const topic = el.html()
-  el.addClass('pub-filter-selected')
+})
+
+function filter_pubs(el, is_topic) {
+  if (!is_topic) {
+    $('.pub-row-container').children('.pub-project-filter').each(function () {
+      $(this).removeClass('pub-project-filter-selected')
+    })
+    cur_project = el.html()
+    el.addClass('pub-project-filter-selected')
+  } else {
+    $('.pub-row-container').children('.pub-filter').each(function () {
+      $(this).removeClass('pub-filter-selected')
+    })
+    cur_topic = el.html()
+    el.addClass('pub-filter-selected')
+  }
 
   const years = new Set();
   for (let i = 0; i < pub_els.length; i++) {
-    if (topic == 'All' || all_pubs[i]['Research Area Tags'].includes(topic)) {
+    if ((cur_project == 'All' || (all_pubs[i].hasOwnProperty('Project Tags') && all_pubs[i]['Project Tags'].includes(cur_project))) &&
+        (cur_topic == 'All' || (all_pubs[i].hasOwnProperty('Topic Tags') && all_pubs[i]['Topic Tags'].includes(cur_topic)))) {
       pub_els[i].removeClass('d-none')
       const dateParts = all_pubs[i]["Date"].split("/");
       years.add(dateParts[dateParts.length-1])
@@ -118,14 +140,26 @@ GSheetReader(
       })
       linksRow.append(linksContainer)
       linksRow.append(topicsContainer)
-      result['Research Area Tags'].split(',').forEach(tag => {
-        if (tag.length > 0) {
-          topicsContainer.append($('<div>', {
-            html: tag,
-            class: 'pub-filter mx-1 my-1 px-2'
-          }))
-        }
-      })
+      if (result.hasOwnProperty('Project Tags')) {
+        result['Project Tags'].split(',').forEach(tag => {
+          if (tag.length > 0) {
+            topicsContainer.append($('<div>', {
+              html: tag,
+              class: 'pub-project-filter mx-1 my-1 px-2'
+            }))
+          }
+        })
+      }
+      if (result.hasOwnProperty('Topic Tags')) {
+        result['Topic Tags'].split(',').forEach(tag => {
+          if (tag.length > 0) {
+            topicsContainer.append($('<div>', {
+              html: tag,
+              class: 'pub-filter mx-1 my-1 px-2'
+            }))
+          }
+        })
+      }
       linksContainer.append($('<a>', {
           class: 'pub-link',
           html: 'PDF',

@@ -11695,6 +11695,7 @@ GSheetReader(
           class: 'team-left d-flex flex-column col-12 col-md-6 text-center container justify-content-center align-items-center'
       })
       leftContainer.append($('<img>', {
+          loading: 'lazy',
           src: 'https://drive.google.com/uc?export=view&'+result['Share a photo of yourself for the website'].substring(result['Share a photo of yourself for the website'].indexOf('id='))
       }))
       leftContainer.append($('<h2>', {
