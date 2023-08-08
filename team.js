@@ -7,7 +7,7 @@ const options = {
   sheetName: 'Form Responses 1'
 }
 
-const roles = ['Prinicipal Investigator', 'Lab Manager', 'Staff Scientist', 'Post-Doctoral Researcher', 'Clinical Research Coordinator', 'Graduate Student', 'Laboratory Technician', 'Undergraduate Student']
+const roles = ['Prinicipal Investigator', 'Lab Manager', 'Clinical Trials Director', 'Staff Scientist', 'Post-Doctoral Researcher', 'Clinical Research Coordinator', 'Graduate Student', 'Laboratory Technician', 'Undergraduate Student']
 
 function comparePeople(a, b) {
   if (roles.indexOf(a['Job Title (Select closest fit)']) < roles.indexOf(b['Job Title (Select closest fit)'])) {
