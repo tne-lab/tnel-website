@@ -763,6 +763,11 @@ section {
     border-color: rgba(0,0,0,.125);
 }
 
+.benefit-item {
+  font-size: 0.6em;
+  font-family: 'Open Sans'
+}
+
 #team-header {
   height: 200px;
   background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url("../img/sfn.webp");
