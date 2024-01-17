@@ -8,7 +8,7 @@ $.getJSON("https://www.googleapis.com/drive/v3/files?q='1EP0dhEEFRg1VuUOjm7ZrVXh
       })
       outsideContainer.append($('<img>', {
           class: 'outside-img',
-          src: 'https://drive.google.com/uc?export=view&id='+result.id,
+          src: 'https://drive.google.com/thumbnail?sz=w1000&id='+result.id,
           loading: "lazy"
       }))
       outsideContainer.append($('<h1>', {

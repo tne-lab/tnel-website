@@ -11696,7 +11696,7 @@ GSheetReader(
       })
       leftContainer.append($('<img>', {
           loading: 'lazy',
-          src: 'https://drive.google.com/uc?export=view&'+result['Share a photo of yourself for the website'].substring(result['Share a photo of yourself for the website'].indexOf('id='))
+          src: 'https://drive.google.com/thumbnail?sz=w1000&'+result['Share a photo of yourself for the website'].substring(result['Share a photo of yourself for the website'].indexOf('id='))
       }))
       leftContainer.append($('<h2>', {
           class: 'mt-3',

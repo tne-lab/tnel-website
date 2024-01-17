@@ -17,7 +17,7 @@ GSheetReader(
       return new Date(b["Date"]) - new Date(a["Date"])
     })
     $('.pub-square-image').each(function(i, obj) {
-      $(this).css('background-image','url(https://drive.google.com/uc?export=view&'+results[i]['Figure'].substring(results[0]['Figure'].indexOf('id='))+')');
+      $(this).css('background-image','url(https://drive.google.com/thumbnail?sz=w1000&'+results[i]['Figure'].substring(results[0]['Figure'].indexOf('id='))+')');
         $(this).children().eq(0).text(results[i].Title)
         textFit($(this).children()[0])
     });

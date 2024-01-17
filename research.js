@@ -14,7 +14,7 @@ GSheetReader(
       let projectContainer = $('<div>', {
           class: 'col-12 col-md-6 col-lg-4'
       })
-      let image = 'https://drive.google.com/uc?export=view&id=' + result['Image']
+      let image = 'https://drive.google.com/thumbnail?sz=w1000&id=' + result['Image']
       let background = $('<div>', {
           class: 'project_back project_item ratio ratio-1x1 align-items-center justify-content-center',
           style: "background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url('" + image + "'); background-position: center; background-size: cover"
