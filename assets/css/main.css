@@ -1119,6 +1119,32 @@ section {
   opacity: 1;
 }
 
+.media-box {
+  display: block;
+  background-color: rgb(1, 23, 64);
+  height: 100%;
+}
+
+.media-source {
+  color: white;
+  font-family: "Open Sans";
+}
+
+.media-title {
+  font-family: "Open Sans";
+  color: rgb(90,161,127);
+}
+
+.media-desc {
+  color: white;
+  font-family: "Open Sans";
+}
+
+.media-img {
+  width: 100%;
+  height: auto;
+}
+
 .research-title {
   background: url(../img/research.webp);
   background-position: center;

@@ -3,6 +3,7 @@
     "fittextjs": "^1.2.0",
     "fitty": "^2.3.6",
     "g-sheets-api": "^2.1.2",
-    "jquery": "^3.6.0"
+    "jquery": "^3.6.0",
+    "open-graph-scraper-lite": "^2.0.0"
   }
 }
