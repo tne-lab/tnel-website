@@ -11682,6 +11682,9 @@ GSheetReader(
       $(this).css('background-image','url(https://drive.google.com/thumbnail?sz=w1000&'+results[i]['Figure'].substring(results[0]['Figure'].indexOf('id='))+')');
         $(this).children().eq(0).text(results[i].Title)
         textFit($(this).children()[0])
+        $(this).on('click', function() {
+          window.location = results[i]['Link (DOI)'];
+        })
     });
     //$('#title').text(results[0].Title)
     //$('#authors').html(results[0].Authors.replace(new RegExp(String.fromCharCode(8224),"g"),'<sup>'+String.fromCharCode(8224)+'</sup>'))
