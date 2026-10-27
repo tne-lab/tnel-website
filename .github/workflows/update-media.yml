@@ -27,8 +27,6 @@ jobs:
 
       - name: Generate metadata
         run: node fetch-media.js
-        env:
-          GSHEETS_API_KEY: ${{ secrets.GSHEETS_API_KEY }}
 
       - name: Commit updated metadata
         run: |
