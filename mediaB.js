@@ -1,5 +1,5 @@
 
-$(function () {
+document.addEventListener('DOMContentLoaded', () => {
   fetch('media.json')
     .then(response => {
       if (!response.ok) {
