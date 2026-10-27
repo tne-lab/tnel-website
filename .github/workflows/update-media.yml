@@ -1,0 +1,43 @@
+
+name: Update media metadata
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  update-media:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --no-save g-sheets-api open-graph-scraper-lite
+
+      - name: Generate metadata
+        run: node fetch-media.js
+        env:
+          GSHEETS_API_KEY: ${{ secrets.GSHEETS_API_KEY }}
+
+      - name: Commit updated metadata
+        run: |
+          if ! git diff --quiet -- media.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add media.json
+            git commit -m "Update media metadata"
+            git push
+          else
+            echo "Media metadata has not changed."
+          fi
