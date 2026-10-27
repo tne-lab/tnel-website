@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const options = {
-  apiKey: process.env.GSHEETS_API_KEY,
+  apiKey: 'AIzaSyAqDn2MItlUzWwLihcnahiI-Pnyxdk4wA8',
   sheetId: '14t8BJBUmkVv43BU71uP733i907PxTvkLShvSIbfrARU',
   sheetName: 'Sheet1'
 };
