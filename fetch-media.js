@@ -70,7 +70,7 @@ async function main() {
   media.sort((a, b) => Number(b.pinned) - Number(a.pinned));
 
   fs.writeFileSync(
-    path.join(__dirname, '..', 'media.json'),
+    path.join(__dirname, 'media.json'),
     JSON.stringify(media, null, 2) + '\n'
   );
 
