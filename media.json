@@ -2,8 +2,8 @@
   {
     "url": "https://www.startribune.com/university-of-minnesota-studies-brains-electrical-signals-as-warnings-for-depression-suicide/600289099/",
     "pinned": true,
-    "source": "www.startribune.com",
-    "title": "https://www.startribune.com/university-of-minnesota-studies-brains-electrical-signals-as-warnings-for-depression-suicide/600289099/",
+    "source": "startribune.com",
+    "title": "600289099",
     "description": "",
     "image": ""
   },
@@ -18,18 +18,18 @@
   {
     "url": "https://www.youtube.com/watch?v=IctxfyMVOKc",
     "pinned": true,
-    "source": "www.youtube.com",
-    "title": " - YouTube",
-    "description": "Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.",
-    "image": ""
+    "source": "TEDx Talks",
+    "title": "Healing mental illness through brain network stimulation | Alik Widge | TEDxMinneapolis",
+    "description": "Video by TEDx Talks",
+    "image": "https://i.ytimg.com/vi/IctxfyMVOKc/hqdefault.jpg"
   },
   {
     "url": "https://www.youtube.com/watch?v=V1UcPYHkyMI",
     "pinned": true,
-    "source": "www.youtube.com",
-    "title": " - YouTube",
-    "description": "Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.",
-    "image": ""
+    "source": "YouTube",
+    "title": "YouTube video",
+    "description": "",
+    "image": "https://img.youtube.com/vi/V1UcPYHkyMI/hqdefault.jpg"
   },
   {
     "url": "https://www.minnpost.com/mental-health-addiction/2023/07/university-of-minnesota-researchers-hope-freud-tool-will-detect-early-signs-of-serious-mental-illness/",
@@ -50,10 +50,10 @@
   {
     "url": "https://www.youtube.com/watch?v=e0kDmhg4EIg",
     "pinned": false,
-    "source": "www.youtube.com",
-    "title": " - YouTube",
-    "description": "Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.",
-    "image": ""
+    "source": "UWECEmedia",
+    "title": "UWECE Research Colloquium: May 2, 2023 - Alik Widge, University of Minnesota",
+    "description": "Video by UWECEmedia",
+    "image": "https://i.ytimg.com/vi/e0kDmhg4EIg/hqdefault.jpg"
   },
   {
     "url": "https://mndaily.com/278275/campus-administration/umn-begins-research-on-detecting-suicidal-thoughts-through-brains-electrical-signals/",
@@ -74,25 +74,25 @@
   {
     "url": "https://www.youtube.com/watch?v=PcA018gDJXw",
     "pinned": false,
-    "source": "www.youtube.com",
-    "title": " - YouTube",
-    "description": "Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.",
-    "image": ""
+    "source": "One Mind",
+    "title": "Brain Waves: Cognitive Flexibility",
+    "description": "Video by One Mind",
+    "image": "https://i.ytimg.com/vi/PcA018gDJXw/hqdefault.jpg"
   },
   {
     "url": "https://www.youtube.com/watch?v=KqpoMXq5XEs",
     "pinned": false,
-    "source": "www.youtube.com",
-    "title": " - YouTube",
-    "description": "Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.",
-    "image": ""
+    "source": "BRAIN Initiative ®",
+    "title": "Dr. Alik Widge and The BRAIN Initiative®",
+    "description": "Video by BRAIN Initiative ®",
+    "image": "https://i.ytimg.com/vi/KqpoMXq5XEs/hqdefault.jpg"
   },
   {
     "url": "https://www.youtube.com/watch?v=QRVvHEGgOOc",
     "pinned": false,
-    "source": "www.youtube.com",
-    "title": " - YouTube",
-    "description": "Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.",
-    "image": ""
+    "source": "Dana Foundation",
+    "title": "Brain Stimulation & Mental Health with Alik Widge, M.D., Ph.D.",
+    "description": "Video by Dana Foundation",
+    "image": "https://i.ytimg.com/vi/QRVvHEGgOOc/hqdefault.jpg"
   }
 ]
