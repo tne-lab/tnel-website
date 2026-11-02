@@ -77,17 +77,17 @@ async function getYouTubeMetadata(url) {
 // Extract a readable title from a URL when a publisher blocks requests.
 function titleFromUrl(url) {
   try {
-    const parsed = new URL(url);
-
-    const slug = parsed.pathname
+   const segments = new URL(url).pathname
       .split('/')
-      .filter(Boolean)
-      .pop();
+      .filter(Boolean);
 
-    if (!slug) return parsed.hostname.replace(/^www\./, '');
+    const slug = [...segments]
+      .reverse()
+      .find(segment => !/^\d+$/.test(segment));
+
+    if (!slug) return url;
 
     return decodeURIComponent(slug)
-      .replace(/\.[a-z0-9]+$/i, '')
       .replace(/[-_]+/g, ' ')
       .replace(/\b\w/g, char => char.toUpperCase());
   } catch {
