@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sort pinned entries first, then regular entries.
     // Reverse each group to show newest entries first (because excel has old entries first )
     const pinnedItems = items
-        .filter(item => String(item.pinned).trim().toLowerCase() === 'y')
+        .filter(item => item.pinned === true)
         .reverse();
 
     const regularItems = items
-        .filter(item => String(item.pinned).trim().toLowerCase() !== 'y')
+        .filter(item => item.pinned !== true)
         .reverse();
 
     const sortedItems = [...pinnedItems, ...regularItems];
