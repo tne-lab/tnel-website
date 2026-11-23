@@ -16,8 +16,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
     container.innerHTML = '';
+
+    // Sort pinned entries first, then regular entries.
+    // Reverse each group to show newest entries first (because excel has old entries first )
+    const pinnedItems = items
+        .filter(item => String(item.pinned).trim().toLowerCase() === 'y')
+        .reverse();
+
+    const regularItems = items
+        .filter(item => String(item.pinned).trim().toLowerCase() !== 'y')
+        .reverse();
+
+    const sortedItems = [...pinnedItems, ...regularItems];
   
-    items.forEach(item => {
+    sortedItems.forEach(item => {
       const mediaContainer = document.createElement('div');
       mediaContainer.className = 'col';
   
